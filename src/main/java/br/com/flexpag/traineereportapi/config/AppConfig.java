@@ -18,6 +18,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
+/**
+ * Principais configurações da API para conexão com S3,
+ * jdbcTemplate e SpringDoc
+ */
 @Configuration
 @RequiredArgsConstructor
 public class AppConfig {

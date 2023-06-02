@@ -7,12 +7,20 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Classe responsavel por recolher dados do banco de dados.
+ */
 @Service
 @RequiredArgsConstructor
 public class DataService {
 
     private final JdbcTemplate jdbcTemplate;
 
+    /**
+     * Consulta de dados para gerar relatório do tipo client
+     * @param clientId Id do cliente. Usado como filtro
+     * @return Uma lista com os ddados mapeados em String Object
+     */
     public List<Map<String, Object>> fetchClientFromDatabase(Long clientId) {
 
         String sql = """
@@ -30,6 +38,12 @@ public class DataService {
 
     }
 
+    /**
+     * Consulta de dados para gerar relatório do tipo transaction
+     * @param paymentType Tipo de pagamento da transação
+     * @param status Status de pagamento da transação
+     * @return Uma lista com os ddados mapeados em String Object
+     */
     public List<Map<String, Object>> fetchTransactionFromDatabase(
             String paymentType,
             String status) {

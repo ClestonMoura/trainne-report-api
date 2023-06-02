@@ -11,6 +11,9 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Classe responsavel por gerar o relatório do tipo client
+ */
 @Slf4j
 @RequiredArgsConstructor
 @Service

@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
+/**
+ * Classe factory que retorna um service baseado no tipo de relatório.
+ */
 @Component
 @RequiredArgsConstructor
 public class ServiceFactory {

@@ -9,6 +9,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * Classe de serviços da AWS. Responsavel por gerar o nome do arquivo, armazenamento e
+ * retornar o arquivo salvo na bucket
+ */
 @Service
 @RequiredArgsConstructor
 public class AWSService {
@@ -17,6 +21,11 @@ public class AWSService {
 
     private int number = 0;
 
+    /**
+     * Armazena um novo arquivo no S3
+     * @param bucketName Nome do arquivo
+     * @param outputStream Arquivo que será salvo
+     */
     public void putObject(String bucketName, ByteArrayOutputStream outputStream) {
 
         var inputStream = new ByteArrayInputStream(outputStream.toByteArray());
@@ -30,11 +39,22 @@ public class AWSService {
 
     }
 
+    /**
+     * Método auxiliar para gerar o nome do arquivo
+     * @return String
+     */
     private String generateName() {
         number++;
         return "report-%d.xlsx".formatted(number);
     }
 
+    /**
+     * Método que faz o Download do arquivo do S3 bucket e o converte em ByteArrayOutputStream
+     * @param bucketName Nome do bucket
+     * @param objectName Nome do arquivo
+     * @return Arquivo convertido
+     * @throws IOException Caso haja erro de conversão
+     */
     public ByteArrayOutputStream downloadReport(String bucketName, String objectName) throws IOException {
 
         S3Object s3Object = amazonS3.getObject(new GetObjectRequest(bucketName, objectName));

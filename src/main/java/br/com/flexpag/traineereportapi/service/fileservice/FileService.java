@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * Interface com um método para gerar o tipo de relaótio
+ */
 @Service
 public interface FileService {
 

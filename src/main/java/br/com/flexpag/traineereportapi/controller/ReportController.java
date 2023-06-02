@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+/**
+ * Classe principal de requisições da API
+ */
 @RestController
 @RequestMapping("/api/reports")
 @RequiredArgsConstructor
@@ -24,6 +27,15 @@ public class ReportController {
     private final AWSService awsService;
     private static final String BUCKET_NAME = "trainee-payments-api";
 
+    /**
+     * Requisição principal para a criação do relatório
+     * @param reportType tipo de relatório
+     * @param clientId parâmetro opcional do id do cliente
+     * @param paymentType parâmetro opcional do tipo de pagamento
+     * @param status parâmetro opcional do status do pagamento
+     * @return ByteArrayOutputStream
+     * @throws IOException caso aconteça um erro na escrita do arquivo
+     */
     @GetMapping(produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public ResponseEntity<byte[]> createReport(@RequestParam String reportType,
                                   @RequestParam(required = false) Long clientId,
@@ -41,6 +53,12 @@ public class ReportController {
         return new ResponseEntity<>(outputStream.toByteArray(), headers, HttpStatus.OK);
     }
 
+    /**
+     * Requisição para fazer o download do relatório armazenado no S3
+     * @param objectName O nome do arquivo armazenado
+     * @return ByteArrayOutputStream
+     * @throws IOException Caso Aconteça um erro de conversão do arquivo
+     */
     @GetMapping(value = "/download", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
     public ResponseEntity<byte[]> downloadReport(@RequestParam String objectName) throws IOException {
 

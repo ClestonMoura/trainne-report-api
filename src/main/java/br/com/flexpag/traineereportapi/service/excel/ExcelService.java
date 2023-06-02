@@ -11,10 +11,19 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Classe reponsavel por gerar o arquivo Excel
+ */
 public class ExcelService {
 
     private ExcelService() {}
 
+    /**
+     * Gera um novo arquivo Excel
+     * @param data Consulta do banco de dados
+     * @return Arquivo Excel em ByteArrayOutputStream
+     * @throws IOException Caso ocorra um erro na escrita
+     */
     public static ByteArrayOutputStream generateExcel(List<Map<String, Object>> data) throws IOException {
 
         if (data == null) {
