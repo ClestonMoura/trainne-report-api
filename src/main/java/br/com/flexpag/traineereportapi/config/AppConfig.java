@@ -33,8 +33,8 @@ public class AppConfig {
         return new JdbcTemplate(dataSource);
     }
 
-    private static final String ACCESS_KEY = "AKIARSBKZNOICKRXVGPF";
-    private static final String SECRET_KEY = "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";
+    private static final String ACCESS_KEY = "access key";
+    private static final String SECRET_KEY = "secret key";
 
 
 
